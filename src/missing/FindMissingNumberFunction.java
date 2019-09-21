@@ -15,15 +15,21 @@ public class FindMissingNumberFunction {
 //		}
 // return result
 		
+		// Store all the element in the array in hashset
 		Set<Integer> set = new HashSet<>();
 		
-		int solution = 1;
+		// solution will always be 0 in case the list is empty
+		// IMPORTANT if smallest number could only be 1, then change solution to 1 and the for loop number = 1 with number <= num.length
+		int solution = 0;
 		
+		// store all the integer into set without duplicates
 		for(int i = 0; i < nums.length; i++){
 			set.add(nums[i]);
 		}
 		
-		for(int number = 1; number <= nums.length; number++){
+		// starting from 1 to the whole length, it will always get the missing lowest positive number
+		for(int number = 0; number < nums.length; number++){
+			// Whenever the smallest value is in the array, solution will change to next smallest value
 			if(set.contains(number) && solution == number){
 				solution++;
 			}
