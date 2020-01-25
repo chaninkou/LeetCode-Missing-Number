@@ -1,7 +1,10 @@
 package missing;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class FindMissingNumberFunction {
 	public int missingNumber(int[] nums) {
@@ -36,5 +39,35 @@ public class FindMissingNumberFunction {
 		}
 
 		return solution;
+	}
+	
+	public int missingNumber1(int[] nums){
+		// Sort the array first, it will be nlog(n)
+		Arrays.sort(nums);
+		
+		// Just checking which one is missing from the start
+		for(int i = 0; i < nums.length; i++){
+			if(nums[i] != i){
+				return i;
+			}
+		}
+		
+		// Since if its not in the for loop, it will be the next element of the last index
+		return nums.length;
+	}
+	
+	// This is more like a formula for this problem only
+	public int missingNumber2(int[] nums){
+		// Sum will hold what we have so far
+		int sum = 0;
+		
+		for(int num : nums){
+			sum += num;
+		}
+		
+		// This will get the total we need to haver
+		int totalSum = nums.length * (nums.length + 1) / 2;
+		
+		return totalSum - sum;
 	}
 }
