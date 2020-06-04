@@ -42,7 +42,7 @@ public class FindMissingNumberFunction {
 	}
 	
 	public int missingNumber1(int[] nums){
-		// Sort the array first, it will be nlog(n)
+		// Sort the array first, it will be nlog(n) 
 		Arrays.sort(nums);
 		
 		// Just checking which one is missing from the start
